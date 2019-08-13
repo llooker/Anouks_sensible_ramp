@@ -23,6 +23,7 @@ explore: daily_activity {}
 explore: distribution_centers {}
 
 explore: events {
+  label: "(2) Webevents Users"
   join: users {
     type: left_outer
     sql_on: ${events.user_id} = ${users.id} ;;
@@ -31,6 +32,7 @@ explore: events {
 }
 
 explore: inventory_items {
+  hidden: yes
   join: products {
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
@@ -45,6 +47,7 @@ explore: inventory_items {
 }
 
 explore: order_items {
+  label: "(1) Orders, Users and Items"
   join: users {
     type: left_outer
     sql_on: ${order_items.user_id} = ${users.id} ;;
@@ -71,6 +74,7 @@ explore: order_items {
 }
 
 explore: products {
+  hidden: yes
   join: distribution_centers {
     type: left_outer
     sql_on: ${products.distribution_center_id} = ${distribution_centers.id} ;;
@@ -78,6 +82,10 @@ explore: products {
   }
 }
 
-explore: user_count_daily_rollup {}
+explore: user_count_daily_rollup {
+  label: "Daily User Rollup"
+}
 
-explore: users {}
+explore: users {
+  hidden: yes
+}
