@@ -117,4 +117,18 @@ view: events {
     drill_fields: [country, session_id, latitude, longitude, zip, users.name]
     value_format_name: percent_1
   }
+
+  measure: cancel_count {
+    type: count
+    filters: {
+      field: event_type
+      value: "Cancel"
+    }
+  }
+
+  measure: churn {
+    type: number
+    sql:  1.0*NULLIF(${cancel_count},0)/NULLIF(${count},0)] ;;
+    drill_fields: [country, user.email]
+  }
 }

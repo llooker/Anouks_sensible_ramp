@@ -10,20 +10,13 @@ datagroup: anouks_sensible_ramp_default_datagroup {
 
 persist_with: anouks_sensible_ramp_default_datagroup
 
-explore: a {}
 
-explore: bsandell {}
-
-explore: company_list {}
-
-explore: daily_active {}
-
-explore: daily_activity {}
-
-explore: distribution_centers {}
+explore: distribution_centers {
+  hidden: yes
+}
 
 explore: events {
-  label: "(2) Webevents Users"
+  label: "(2) Web Events and Users"
   join: users {
     type: left_outer
     sql_on: ${events.user_id} = ${users.id} ;;
@@ -83,6 +76,7 @@ explore: products {
 }
 
 explore: user_count_daily_rollup {
+  hidden: yes
   label: "Daily User Rollup"
 }
 
