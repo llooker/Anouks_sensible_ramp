@@ -107,7 +107,7 @@ view: events {
     type: count
     filters: {
       field: event_type
-      value: "purchase"
+      value: "Purchase"
     }
   }
 
@@ -115,6 +115,6 @@ view: events {
     type: number
     sql: 1.0 * NULLIF(${purchase_count},0)/NULLIF(${count},0) ;;
     drill_fields: [country, session_id, latitude, longitude, zip, users.name]
-    value_format_name: percent_2
+    value_format_name: percent_1
   }
 }
