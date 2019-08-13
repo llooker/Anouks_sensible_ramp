@@ -16,7 +16,7 @@ explore: distribution_centers {
 }
 
 explore: events {
-  label: "(2) Web Events and Users"
+  label: "(2) Churn - Users/Events"
   join: users {
     type: left_outer
     sql_on: ${events.user_id} = ${users.id} ;;
