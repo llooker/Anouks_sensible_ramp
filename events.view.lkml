@@ -126,9 +126,10 @@ view: events {
     }
   }
 
-  measure: churn {
+  measure: churn_percentage {
     type: number
-    sql:  1.0*NULLIF(${cancel_count},0)/NULLIF(${count},0)] ;;
+    sql:  1.0*NULLIF(${cancel_count},0)/NULLIF(${count},0) ;;
     drill_fields: [country, user.email]
+    value_format_name: percent_1
   }
 }
