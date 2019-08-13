@@ -119,11 +119,12 @@ view: events {
   }
 
   measure: cancel_count {
-    type: count
+    type: count_distinct
     filters: {
       field: event_type
       value: "Cancel"
     }
+    drill_fields: [user_id, users.email, city, created_month]
   }
 
   measure: churn_percentage {
