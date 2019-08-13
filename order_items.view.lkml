@@ -58,6 +58,7 @@ view: order_items {
       year
     ]
     sql: ${TABLE}.returned_at ;;
+    drill_fields: [user_id, users.email]
   }
 
   dimension: sale_price {
@@ -93,6 +94,12 @@ view: order_items {
   measure: count {
     type: count
     drill_fields: [detail*]
+  }
+
+  measure: total_sales_price{
+    type: sum
+    sql: ${sale_price} ;;
+    drill_fields: [products.brand, users.first_name, users.last_name, users.city]
   }
 
   # ----- Sets of fields for drilling ------

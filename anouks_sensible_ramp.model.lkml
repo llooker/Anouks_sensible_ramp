@@ -21,6 +21,7 @@ explore: events {
     type: left_outer
     sql_on: ${events.user_id} = ${users.id} ;;
     relationship: many_to_one
+
   }
 }
 
@@ -40,6 +41,7 @@ explore: inventory_items {
 }
 
 explore: order_items {
+  fields: [ALL_FIELDS*,-users.cancellation_count]
   label: "(1) Orders, Users and Items"
   join: users {
     type: left_outer
@@ -64,6 +66,12 @@ explore: order_items {
     sql_on: ${products.distribution_center_id} = ${distribution_centers.id} ;;
     relationship: many_to_one
   }
+
+#   join: events {
+#     type: left_outer
+#     sql_on: ${events.user_id} = ${users.id} ;;
+#     relationship: many_to_one
+#   }
 }
 
 explore: products {
@@ -81,5 +89,6 @@ explore: user_count_daily_rollup {
 }
 
 explore: users {
+  fields: [ALL_FIELDS*,-users.cancellation_count]
   hidden: yes
 }
