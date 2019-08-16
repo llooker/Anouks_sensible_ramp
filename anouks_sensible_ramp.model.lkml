@@ -92,3 +92,7 @@ explore: users {
   fields: [ALL_FIELDS*,-users.cancellation_count]
   hidden: yes
 }
+
+explore: bq_forex {
+  label: "FX data"
+}

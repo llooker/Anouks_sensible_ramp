@@ -118,19 +118,22 @@ view: events {
     value_format_name: percent_1
   }
 
+
+#
+#   measure: churn_percentage {
+#     type: number
+#     sql:  1.0*NULLIF(${users.cancel_count},0)/NULLIF(${count},0) ;;
+#     drill_fields: [country, user.email]
+#     value_format_name: percent_1
+#   }
+
   measure: cancel_count {
     type: count_distinct
+    sql: ${users.id} ;;
     filters: {
-      field: event_type
+      field: events.event_type
       value: "Cancel"
     }
-    drill_fields: [user_id, users.email, city, created_month]
-  }
-
-  measure: churn_percentage {
-    type: number
-    sql:  1.0*NULLIF(${cancel_count},0)/NULLIF(${count},0) ;;
-    drill_fields: [country, user.email]
-    value_format_name: percent_1
+    drill_fields: [id, users.email, city, created_month]
   }
 }

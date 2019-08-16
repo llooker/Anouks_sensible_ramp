@@ -100,6 +100,7 @@ view: order_items {
     type: sum
     sql: ${sale_price} ;;
     drill_fields: [products.brand, users.first_name, users.last_name, users.city]
+    value_format_name:  usd_0
   }
 
   # ----- Sets of fields for drilling ------
